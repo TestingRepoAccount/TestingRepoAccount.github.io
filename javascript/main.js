@@ -20,7 +20,6 @@ function xhr(url, load) {
     .then((data) => {
         const path = data['completed works'];
         load(path);
-        // console.log(path);
     })
     .catch((err) => console.log(err));
 }
@@ -36,7 +35,6 @@ if (global_url === pages['completed-works']) {
             stored.push(data[i]);
         }
         for (let i of stored) {
-            console.log(i);
             const li = document.createElement('li');
             const topDiv = document.createElement('div');
             const bottomDiv = document.createElement('div');
@@ -68,5 +66,40 @@ if (global_url === pages['completed-works']) {
 
 //JS code for 'Blog' page
 if (global_url === pages['blog']) {
-    
+    const page = document.querySelector(`#${global_url}`);
+    const section = page.querySelector(`.section`);
+    const ul = section.querySelector('ul');
+    xhr('https://www.jasonbase.com/things/wAe3.json', (data) => {
+        const stored = new Array;
+        for (let i in data) {
+            stored.push(data[i]);
+        }
+        for (let i of stored) {
+            const li = document.createElement('li');
+            const topDiv = document.createElement('div');
+            const bottomDiv = document.createElement('div');
+            const title = document.createElement('h2');
+            const date = document.createElement('h4');
+            const time = document.createElement('h4');
+            const tod = document.createElement('h4');
+            const preview = document.createElement('p');
+
+            li.className = 'display-li';
+
+            title.innerText = i.title;
+            date.innerText = i.date;
+            time.innerText = i.time;
+            tod.innerText = i.tod;
+            preview.innerText = i.preview;
+
+            li.appendChild(topDiv);
+            topDiv.appendChild(title);
+            topDiv.appendChild(date);
+            topDiv.appendChild(time);
+            topDiv.appendChild(tod);            
+            li.appendChild(bottomDiv);
+            bottomDiv.appendChild(preview);
+            ul.appendChild(li);
+        }
+    });
 }
