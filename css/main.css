@@ -3,7 +3,32 @@
     box-sizing: border-box;
 }
 
+ul,
+ol,
+dl {
+    list-style: none;
+}
+
+#index {
+    /* background-color: #F4F4F0; */
+}
+
+#index p {
+    font-family: Dvl;
+}
+
+#index section {
+    /* padding-top: 5%; */
+    padding-bottom: 10%;
+}
+
+body {
+    /* background : #fff url(img/ivory-cream-colored-leather-texture.jpg) no-repeat center center; */
+    /* background-image: url(img/coming_soon.jpg); */
+}
+
 /*Classes*/
+
 .main-navbar ul {
     text-align: center;
 }
@@ -88,3 +113,8 @@
 /*Media Query*/
 
 /*Extra*/
+
+@font-face {
+    font-family: Dvl;
+    src: url(fonts/Dolce Vita Light.ttf) format("truetype");
+}
