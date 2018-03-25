@@ -3,118 +3,30 @@
     box-sizing: border-box;
 }
 
-ul,
-ol,
-dl {
-    list-style: none;
+:root {
+    /* background-color: #F0EFF2; */
 }
 
-#index {
-    /* background-color: #F4F4F0; */
+/*Home*/
+#home ul {
+    margin-left: -250px;
 }
 
-#index p {
-    font-family: Dvl;
-}
-
-#index section {
-    /* padding-top: 5%; */
-    padding-bottom: 10%;
-}
-
-body {
-    /* background : #fff url(img/ivory-cream-colored-leather-texture.jpg) no-repeat center center; */
-    /* background-image: url(img/coming_soon.jpg); */
-}
-
-/*Classes*/
-
-.main-navbar ul {
-    text-align: center;
-}
-
-.main-navbar ul li {
+#home li {
     display: inline-block;
-    padding: 30px 3%;
-}
-
-.active-nav {
-    color: orange;
-}
-
-.section {
-    width: 80%;
-    max-width: 80%;
-    border: 2px solid red;
-    border-radius: 10px;
-    margin: 5% auto;
-}
-
-.display-li {
-    width: 80%;
-    max-width: 80%;
-    padding: 10px;
-    border: 2px solid red;
-    border-radius: 10px;
-    margin: 10px auto;
-}
-
-.display-li:hover {
-    cursor: pointer;
-    border-color: orange;
-}
-
-.display-li:nth-child(1n) {
-    margin-bottom: 30px;
-}
-
-.display-li div:first-child *{
-    display: inline-block;
-    margin-bottom: 10px;
-}
-
-.display-li div:first-child h2 {
     font-size: 1.2em;
-    margin-right: 20px;
+    font-style: italic;
+    margin: 0 40px;
 }
 
-.display-li div:first-child h4 {
-    font-size: .9em;
-    margin-right: 10px;
+#home li:hover {
+    color: #262626;
 }
 
-.display-li div:last-child {
-
-}
-/*Body*/
-
-/*Header*/
-
-/*Main*/
-#home-section {
-    margin: 5% auto;
-    text-align: center;
+img {
+    width: 75%;
+    max-width: 75%:
 }
 
-#home-section ul {
-
-}
-
-#home-section ul li {
-    padding: 10px 0;
-}
-
-#home-section ul li:hover {
-    cursor: pointer;
-    color: orange;
-}
-/*Footer*/
-
-/*Media Query*/
-
-/*Extra*/
-
-@font-face {
-    font-family: Dvl;
-    src: url(fonts/Dolce Vita Light.ttf) format("truetype");
-}
+/* #4a4a4a */
+/* #4B4B4B */
