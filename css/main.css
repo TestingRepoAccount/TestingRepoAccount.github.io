@@ -4,28 +4,34 @@
 }
 
 :root {
-    /* background-color: #F0EFF2; */
+    background-color: #F0EFF2;
 }
 
 /*Home*/
 #home ul {
-    margin-left: -250px;
+    margin-left: -300px;
+    margin-top: -50px;
 }
 
 #home li {
     display: inline-block;
     font-size: 1.2em;
     font-style: italic;
-    margin: 0 40px;
+    margin: 0 20px;
+    border-bottom: 5px dashed #F0EFF2;
+    padding: 7px;
 }
 
 #home li:hover {
-    color: #262626;
+    /* color: #262626; */
+    /* border-bottom: 3px dashed red; */
 }
 
 img {
-    width: 75%;
-    max-width: 75%:
+    margin-top: -90px;
+    margin-left: -90px;
+    width: 90%;
+    max-width: 90%:
 }
 
 /* #4a4a4a */
