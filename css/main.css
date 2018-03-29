@@ -4,35 +4,49 @@
 }
 
 :root {
-    background-color: #F0EFF2;
+    /* background-color: #F0EFF2; */
+    background-color: #2E7C7C;
 }
 
 /*Home*/
 #home ul {
-    margin-left: -300px;
+    margin-left: -65%;
     margin-top: -50px;
 }
 
 #home li {
+    color: #000;
     display: inline-block;
-    font-size: 1.2em;
+    font-family: 'dolce vita normal.tff';
+    font-size: 1.3em;
     font-style: italic;
-    margin: 0 20px;
-    border-bottom: 5px dashed #F0EFF2;
+    margin: 0 10px;
+    /* border-bottom: 5px dashed #F0EFF2; */
     padding: 7px;
 }
 
-#home li:hover {
+/* #home li:hover {
     /* color: #262626; */
     /* border-bottom: 3px dashed red; */
-}
+} */
 
 img {
-    margin-top: -90px;
-    margin-left: -90px;
-    width: 90%;
-    max-width: 90%:
+    /* margin-top: -90px;
+    margin-left: -90px; */
 }
 
-/* #4a4a4a */
-/* #4B4B4B */
+/*Fonts*/
+@font-face {
+    font-family: 'dolce vita normal';
+    src: url('fonts/Dolce Vita.tff') format(truetype);
+}
+
+@font-face {
+    font-family: 'dolce vita light';
+    src: url('fonts/Dolce Vita Light.tff') format(truetype);
+}
+
+@font-face {
+    font-family: 'dolce vita bold';
+    src: url('fonts/Dolce Vita Heavy Bold.tff') format(truetype);
+}

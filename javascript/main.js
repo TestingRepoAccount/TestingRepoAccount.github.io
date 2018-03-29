@@ -10,10 +10,13 @@ window.onload = function () {
 
         //Mouseover/Mouseout styling for bottom border menu items
         home_nav_li[i].addEventListener('mouseover', (e) => {
-            e.target.style.borderBottomColor = generate_color();
+            // e.target.style.borderBottom = `5px solid ${generate_color()}`;
+            e.target.style.fontWeight = 'bold';
         });
         home_nav_li[i].addEventListener('mouseout', (e) => {
-            e.target.style.borderBottomColor = '#F0EFF2';           
+            // e.target.style.borderBottom = 'none';      
+            e.target.style.fontWeight = 'normal';
+                 
         })
     }
 
