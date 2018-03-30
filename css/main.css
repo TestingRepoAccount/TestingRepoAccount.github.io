@@ -6,6 +6,10 @@
 :root {
     /* background-color: #F0EFF2; */
     background-color: #2E7C7C;
+   /* background-color: #222; */
+   /* background-color: #fff; */
+   /* background-color: #F0EFF2; */
+
 }
 
 /*Home*/
@@ -18,7 +22,7 @@
     color: #000;
     display: inline-block;
     font-family: 'dolce vita normal.tff';
-    font-size: 1.3em;
+    font-size: 1.2em;
     font-style: italic;
     margin: 0 10px;
     /* border-bottom: 5px dashed #F0EFF2; */
