@@ -12,6 +12,7 @@ window.onload = function () {
         home_nav_li[i].addEventListener('mouseover', (e) => {
             // e.target.style.borderBottom = `5px solid ${generate_color()}`;
             e.target.style.fontWeight = 'bold';
+            // e.target.style.overflow = 'hidden';
         });
         home_nav_li[i].addEventListener('mouseout', (e) => {
             // e.target.style.borderBottom = 'none';      

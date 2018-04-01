@@ -5,16 +5,16 @@
 
 :root {
     /* background-color: #F0EFF2; */
-    background-color: #2E7C7C;
+    /* background-color: #2E7C7C; */
    /* background-color: #222; */
    /* background-color: #fff; */
-   /* background-color: #F0EFF2; */
+   background-color: #F0EFF2;
 
 }
 
 /*Home*/
 #home ul {
-    margin-left: -65%;
+    margin-left: -60%;
     margin-top: -50px;
 }
 
@@ -27,6 +27,15 @@
     margin: 0 10px;
     /* border-bottom: 5px dashed #F0EFF2; */
     padding: 7px;
+}
+
+li::after {
+    display: block;
+    content: attr(title);
+    font-weight: bold;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
 }
 
 /* #home li:hover {
