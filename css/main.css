@@ -4,15 +4,7 @@
 }
 
 :root {
-    /* background-color: #F0EFF2; */
-    /* background-color: #2E7C7C; */
-   /* background-color: #222; */
-   /* background-color: #fff; */
-   background-color: #F0EFF2;
-   /* background-color: #F2F1F4; - Lighter */
-   /* background-color: #DBDADC; - Darker*/
-   /* background-color: #99999B; -Even Darker*/
-   /* background-color: #424242; */
+   background-color: #DBDADC;
 
 }
 
@@ -47,9 +39,14 @@ li::after {
     /* border-bottom: 3px dashed red; */
 /* } */
 
-img {
+/* img { */
     /* margin-top: -90px;
     margin-left: -90px; */
+/* } */
+
+img {
+    position: static;
+    /* margin-bottom: -500px; */
 }
 
 /*Fonts*/
