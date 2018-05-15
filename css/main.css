@@ -8,6 +8,10 @@
 
 }
 
+a {
+    color: inherit;
+}
+
 /*Home*/
 #home ul {
     margin-left: -30%;
@@ -15,7 +19,6 @@
 }
 
 #home li {
-    color: #000;
     display: inline-block;
     font-family: 'dolce vita normal.tff';
     font-size: 1.2em;
@@ -25,29 +28,91 @@
     padding: 7px;
 }
 
-li::after {
+#home li,
+#home a {
+    color: #000;    
+}
+
+#home li::after {
     display: block;
     content: attr(title);
     font-weight: bold;
     height: 0;
     overflow: hidden;
     visibility: hidden;
+    /* color: red; */
 }
-
-/* #home li:hover {
-    /* color: #262626; */
-    /* border-bottom: 3px dashed red; */
-/* } */
-
-/* img { */
-    /* margin-top: -90px;
-    margin-left: -90px; */
-/* } */
 
 img {
     position: static;
     /* margin-bottom: -500px; */
 }
+
+/*Body*/
+h2 {
+    font-size: 1.4em;
+}
+
+h3 {
+    font-size: 1.2em;
+}
+
+h4 {
+    font-size: 1em;
+    text-align: center;    
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: bold;
+    color: #666;
+}
+
+.center-align {
+    /* text-align: center; */
+}
+
+article {
+    width: 70%;
+    max-width: 70%;
+    background-color: #000;
+    padding: 20px 40px;
+    margin: 0 auto;
+    margin-top: #;
+    margin-bottom: 40px;
+    color: #ddd;
+    line-height: 2;
+}
+
+article p {
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+article img {
+    display: block;
+    margin: 30px auto;
+    width: 40%;
+    max-width: 40%;
+    height: auto;
+}
+
+.sort-tags {
+    text-align: center;
+    color: #666;
+}
+
+.sort-tags li {
+    cursor: pointer;
+    display: inline-block;
+    margin: 10px;
+}
+
 
 /*Fonts*/
 @font-face {
