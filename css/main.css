@@ -49,9 +49,9 @@ img {
 }
 
 /*Body*/
-h2 {
+/* h2 {
     font-size: 1.4em;
-}
+} */
 
 h3 {
     font-size: 1.2em;
@@ -94,6 +94,7 @@ article p {
     margin-top: 20px;
     margin-bottom: 50px;
     font-size: .9em;
+    text-align: center;
 }
 
 article img {
