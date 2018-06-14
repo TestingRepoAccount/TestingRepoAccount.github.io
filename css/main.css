@@ -57,7 +57,7 @@ h3 {
 }
 
 h4 {
-  font-size: 1em;
+  font-size: 0.7em;
   text-align: center;
 }
 
@@ -92,7 +92,7 @@ article p {
   margin: 0 auto;
   margin-top: 20px;
   margin-bottom: 50px;
-  font-size: 0.7em;
+  font-size: 0.9em;
   /* text-align: center; */
   text-align: justify;
 }
