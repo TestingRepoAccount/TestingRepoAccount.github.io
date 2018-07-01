@@ -80,13 +80,14 @@ article {
   width: 70%;
   max-width: 70%;
   background-color: #000;
-  padding: 20px 40px;
+  padding: 20px;
   margin: 0 auto;
   margin-top: 0;
-  margin-bottom: 80px;
+  margin-bottom: 100px;
   color: #ddd;
   line-height: 1.5;
   border-radius: 2px;
+  text-align: center;
 }
 
 article p {
@@ -98,7 +99,7 @@ article p {
   text-align: justify;
 }
 
-article img {
+article .post-body img {
   display: block;
   margin: 30px auto;
   width: 50%;
@@ -131,4 +132,34 @@ article img {
 @font-face {
   font-family: "dolce vita bold";
   src: url("fonts/Dolce Vita Heavy Bold.tff") format(truetype);
+}
+
+article .post-boarder-left img,
+article .post-boarder-right img {
+  width: 60px;
+  /* margin: 0 !important; */
+}
+
+article .post-boarder-left li,
+article .post-boarder-right li {
+  margin: 10px 0 10px 0;
+}
+
+.post-boarder-left,
+.post-boarder-right,
+.post-body {
+  display: inline-block;
+}
+
+/* .post-boarder-left,
+.post-boarder-right {
+
+} */
+
+.post-body {
+  width: 85%;
+  max-width: 85%;
+  margin: 0 auto;
+  padding-right: 20px;
+  padding-left: 20px;
 }
