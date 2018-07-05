@@ -134,25 +134,25 @@ article .post-body img {
   src: url("fonts/Dolce Vita Heavy Bold.tff") format(truetype);
 }
 
-article .post-boarder-left img,
-article .post-boarder-right img {
+article .post-border-left img,
+article .post-border-right img {
   width: 60px;
   /* margin: 0 !important; */
 }
 
-article .post-boarder-left li,
-article .post-boarder-right li {
+article .post-border-left li,
+article .post-border-right li {
   margin: 10px 0 10px 0;
 }
 
-.post-boarder-left,
-.post-boarder-right,
+.post-border-left,
+.post-border-right,
 .post-body {
   display: inline-block;
 }
 
-/* .post-boarder-left,
-.post-boarder-right {
+/* .post-border-left,
+.post-border-right {
 
 } */
 
@@ -162,4 +162,13 @@ article .post-boarder-right li {
   margin: 0 auto;
   padding-right: 20px;
   padding-left: 20px;
+}
+
+.post-border-left img,
+.post-border-right img {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
 }
