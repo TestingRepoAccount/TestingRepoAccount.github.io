@@ -15,10 +15,6 @@ h6 {
     font-size: 0.7em;
 }
 
-main > article {
-    text-align: center;
-}
-
 /*Fonts*/
 @font-face {
     font-family: "dolce vita normal";
@@ -34,7 +30,6 @@ main > article {
     font-family: "dolce vita bold";
     src: url("/fonts/Dolce Vita Heavy Bold.tff") format(truetype);
 }
-
 
 /*Home page*/
 #home-img {
@@ -69,11 +64,32 @@ main > article {
     margin-right: 40px;
 }
 
+#process > article:before
+{
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    z-index: -1;
+    /* background-color: #000; */
+    background-image: url(../images/filmframe_brown.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 65%;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
 #process > article {
+    position: relative;
     width: 70%;
     max-width: 70%;
     padding: 15px 10px 0px 10px;
-    background-color: #000;
     margin: 0 auto;
     margin-bottom: 100px;
     text-align: center;
@@ -89,23 +105,6 @@ main > article {
     display: inline-block;
     margin-right: 30px;
 }
-
-#process #border-img {
-    width: 70px;
-    max-width: 70px;
-    -webkit-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    -o-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
-    transform: rotate(90deg);
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-#process section {
-    display: inline-block;
-}
-
 
 #article-body {
     padding: 15px;
@@ -143,24 +142,4 @@ main > article {
 #article-body h6,
 #article-body li {
     color: #666;
-}
-
-/*Results Page*/
-.vert-menu {
-    margin-top: 30px;
-}
-
-.vert-menu > ul li {
-    display: inline-block;
-    margin-right: 100px;
-}
-
-.vert-menu ul li > h2 {
-    font-size: 20px;
-    margin-bottom: 20px;
-}
-
-.vert-menu li > a {
-    display: block;
-    margin-bottom: 20px;
 }

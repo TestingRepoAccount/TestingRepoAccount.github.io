@@ -47,15 +47,15 @@ line-height: 1.3;
     src: url("fonts/Dolce Vita.tff") format(truetype);
   }
   
-  @font-face {
+@font-face {
     font-family: "dolce vita light";
     src: url("fonts/Dolce Vita Light.tff") format(truetype);
-  }
-  
-  @font-face {
+}
+
+@font-face {
     font-family: "dolce vita bold";
     src: url("fonts/Dolce Vita Heavy Bold.tff") format(truetype);
-  }
+}
 
 article {
 width: 70%;
