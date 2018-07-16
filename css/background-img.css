@@ -1,0 +1,79 @@
+/*General*/
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    background-color: #DAD9DB;
+}
+
+a,a:visited {
+    color: inherit
+}
+
+h6 {
+    font-size: 0.7em;
+}
+
+/*Fonts*/
+@font-face {
+    font-family: "dolce vita normal";
+    src: url("/fonts/Dolce Vita.tff") format(truetype);
+  }
+  
+@font-face {
+    font-family: "dolce vita light";
+    src: url("/fonts/Dolce Vita Light.tff") format(truetype);
+}
+
+@font-face {
+    font-family: "dolce vita bold";
+    src: url("/fonts/Dolce Vita Heavy Bold.tff") format(truetype);
+}
+
+h2{
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+h2,
+li {
+    color: #666;
+    font-family: 'dolce vita normal'
+}
+
+/* .container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/filmframe_brown.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    text-align: center;
+
+}
+
+/* .hero {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+} */ */
+
+/* .hero ul {
+    text-align: center;
+    margin: 0 auto;
+} */
+
+img {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+    width: 20px !important;
+}
