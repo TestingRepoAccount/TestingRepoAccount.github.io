@@ -76,14 +76,14 @@ main > article {
     background-color: #000;
     /* border-bottom: 2px dashed white; */
     margin: 0 auto;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
     text-align: center;
 }
 
 .border-div  {
     border: 2px dashed #000;
     width: 70%;
-    margin: 20px auto;
+    margin: 0px auto;
 }
 
 /* #process # */
