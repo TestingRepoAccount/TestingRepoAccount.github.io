@@ -31,8 +31,11 @@ html {
 
 /*Classes*/
 .list-group {
+    margin: 0 auto;
     text-align: center;
     margin-top: 30px;
+    background-color: #F2C99B;
+    width: 70%;
 }
 
 .list-group ul {
@@ -40,11 +43,18 @@ html {
 }
 
 .list-group li:hover{
-    color: #fff;
+    opacity: 0.5;
+    cursor: pointer;
 }
 
 .center-text {
     text-align: center;
+}
+
+/*Iframe / Video*/
+iframe {
+    width: 400px;
+    height: 300px;
 }
 
 /*Fonts*/
