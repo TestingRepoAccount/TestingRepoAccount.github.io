@@ -3,32 +3,61 @@
 window.onload = function () {
 
     //Store full url
-    const url = window.location.href;
-    
-    //Parse url and retrieve usefull info
-    function parseURL (url) {
-        const start = url.indexOf("?") + 1;
-        const end = url.indexOf("#", start);
-        let data = url.substring(start, end);
-        //Remove equal sign
-        data = data.replace('=', '/');
-        //Return completed/formated string
-        return `https://player.vimeo.com/${data}`
+    const base_url = window.location.href;
+
+    //Establish types to reference (WRITTING, VIDEO)
+    const video = 'video';
+    const writting = 'writting';
+
+    //Detect page type and set page background color
+    if (base_url.includes(video)) {
+        const test = document.querySelector(':root');
+        test.style.backgroundColor = '#000';
     }
 
-    //Append text to page title
-    const title_h1 = document.querySelector('#video-info');
-    title_h1.textContent = parseURL(url);
-
-    //Create new iframe element
+    //Reference DOM endpoint
     const body = document.querySelector('body > section');
-    const video = document.createElement('iframe');
+    
+    //Parse url and retrieve specific info
+    //RETURN [0] -> TYPE (VIDEO, WRITTING) [1] -> DATA REFERANCE (VIDEO, WRITTING)
+    function parseURL() {
+        //Retrieve usefull info from url
+        let url = base_url.split('mutable.html?')[1];
 
-    //Set src attribute
-    video.setAttribute('src', parseURL(url));
+        //Slit url into data type and data value
+        const url_data = url.split('=');
 
-    //Append video to page
-    body.appendChild(video);
+        const type = url_data[0];
+        const data = url_data[1];
 
-    // console.log(parseURL(url));
+        //Make request to vimeo
+        if (type === video) return ['video', `https://www.vimeo/${data}`];
+
+        //Make internal request to retrieve writting post
+        if (type === writting) return ['writting', data] ;
+
+    }
+
+    //Evaluate URL data
+    function evaluateURL(url_data) {
+
+        const type = url_data[0];
+        const data = url_data[1];
+
+        //Create elements and make request for VIDEO type
+        if (type === video) {
+            //Create new iframe element, set SRC attribute, and append iframe to body
+            const iframe = document.createElement('iframe'); 
+            iframe.setAttribute('src', data);
+            body.appendChild(iframe);
+        }
+
+        //Create elements and make request for WRITTING type || PENDING
+        if (type === writting) {
+            //LOGIC WILL BE WRITTEN ONCE DB IS ESTABLISHED
+        }
+    }
+
+    //Make request
+    evaluateURL(parseURL());
 }

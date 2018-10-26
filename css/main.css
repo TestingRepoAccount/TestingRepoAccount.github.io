@@ -63,8 +63,13 @@ main > article {
     display: inline-block;
 }
 
+/*Align text right ubove ridge about half an inch*/
 #home-nav {
-    margin-left: -150px;
+    margin-left: -64px;
+    position: relative;
+    top: -25px;
+    /* margin-top: -5000px; */
+    /* padding-top: -100px; */
 }
 
 #home-nav li:hover {
