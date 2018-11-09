@@ -18,19 +18,19 @@ window.onload = function () {
             if (node.hasAttribute('data-mutable')) {
                 node.addEventListener('click', element => {
                     //Retrieve DOM element target
-                    const target = element.target;
+                    const target = element.target.parentNode;
 
                     //Retrieve correct data attribute value
                     let element_data = target.getAttribute(data_target);
                     if (split_value) element_data = element_data.split(split_value)[1];
-                    
+
                     //Hold finale route info
                     const final_route = `${route}?${mutable_type}=${element_data}`;
                     console.log(final_route);
                     window.location.href = final_route;
                 });
             }
-        }); 
+        });
     }
 
     //Handle redirect for writings

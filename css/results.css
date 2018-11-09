@@ -44,6 +44,7 @@ html {
 
 .list-group ul {
     margin-bottom: 50px;
+    margin-top: 10px;
 }
 
 .list-group li:hover{
@@ -53,6 +54,12 @@ html {
 
 .center-text {
     text-align: center;
+}
+
+.story-cover img {
+    width: 200px;
+    margin: 0 auto;
+    /* height: auto; */
 }
 
 /*Iframe / Video*/
