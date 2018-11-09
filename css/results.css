@@ -58,6 +58,7 @@ html {
 
 .story-cover img {
     width: 200px;
+    max-width: 200px;
     margin: 0 auto;
     /* height: auto; */
 }
