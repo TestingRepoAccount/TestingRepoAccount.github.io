@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Pages</title>
+</head>
+
+<body>
+    <h1>Pages</h1>
+    <table>
+        <% for(var i=0; i < data.length; i++) { %>
+        <tr>
+            <td>
+                <%= data[i]._id %>
+            </td>
+            <td>
+                <%= data[i].title %>
+            </td>
+            <td>
+                <%= data[i].content %>
+            </td>
+        </tr>
+        <% } %>
+    </table>
+</body>
+<script>
+
+
+</script>
+
+</html>

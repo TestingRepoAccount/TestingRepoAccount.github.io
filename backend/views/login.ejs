@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Login</title>
+</head>
+
+<body>
+  <h1>Login</h1>
+  <p>Email <input name="email" type="text" /></p>
+  <p>Password <input name="password" type="password" /></p>
+  <button id="submit">Login</button>
+</body>
+<script>
+
+  const email = document.querySelector('[name=email]')
+  const password = document.querySelector('[name=password]')
+  const submit = document.querySelector('#submit');
+  const server = "http://localhost:1010"
+  const url = server + "/API/user/login";
+
+  submit.addEventListener('click', e => {
+    const data = {
+      email: email.value,
+      password: password.value
+    }
+    fetch(url, {
+      method: "POST",
+      mode: "cors",
+      cache: "no-cache",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+      },
+      redirect: "follow",
+      referrer: "no-referrer",
+      body: JSON.stringify(data),
+    })
+      .then(response => response.json())
+      .then(json => {
+        localStorage.setItem('token', json.token);
+        if (json.token) window.location.href = server + "/pages";
+      })
+  })
+
+</script>
+
+</html>

@@ -4,12 +4,14 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
-
+const path = require('path')
+const Page = require('./models/page')
 //Configure .ENV file
 // require('dotenv').config()
 
 //Require routes
-const entry = require('./routes/entry');
+const page = require('./routes/page');
+const user = require('./routes/user');
 // const admin = require('./routes/admin');
 // const statistics = require('./routes/statistics');
 
@@ -18,6 +20,10 @@ const entry = require('./routes/entry');
 
 //Setup express
 const app = express();
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
 //Setup cors
 app.use(cors());
@@ -43,9 +49,22 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(auth);
 
 //Setup routes
-app.use('/entry', entry);
-// app.use('/admin', admin);
-// app.use('/statistics', statistics);
+app.use('/API/page', page);
+app.use('/API/user', user);
+app.get('/login', (req, res) => { res.render('login') });
+app.get('/pages', (req, res) => {
+    Page.find({})
+        .exec()
+        .then((result) => res.render('pages', { data: result }));
+
+});
+app.get('/page/:id', (req, res) => {
+    Page.findById(req.params.id)
+        .exec()
+        .then((result) => res.render('page', { data: result }))
+
+});
+
 
 //Handle errors
 app.use((req, res, next) => {

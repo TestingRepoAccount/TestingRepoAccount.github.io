@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Add/Edit Page</title>
+</head>
+
+<body>
+    <h1>Add/Edit Page</h1>
+    <input name="_id" value="<%= data._id %>" type="hidden" />
+    <input name="title" type="text" value="<%= data.title %>" />
+    <textarea name="content"><%= data.content %></textarea>
+    <button id="save">Save</button>
+</body>
+<script>
+    const _id = document.querySelector('[name=_id]')
+    const title = document.querySelector('[name=title]')
+    const content = document.querySelector('[name=content]')
+    const save = document.querySelector('#save');
+    const server = "http://localhost:1010"
+    const page_id = _id | ''
+    const url = server + "/API/page/" + page_id;
+    save.addEventListener('click', e => {
+        fetch(url, {
+            method: "POST",
+            mode: "cors",
+            cache: "no-cache",
+            credentials: "same-origin",
+            headers: {
+                "Content-Type": "application/json; charset=utf-8",
+            },
+            redirect: "follow",
+            referrer: "no-referrer",
+            body: JSON.stringify(data),
+        })
+            .then(response => response.json())
+            .then(json => {
+                if (json.success) window.location.href = server + "/pages";
+            })
+    })
+
+</script>
+
+</html>

@@ -1,0 +1,30 @@
+{
+  "name": "project-x",
+  "version": "1.0.0",
+  "description": "Project X",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://asaadsaad@bitbucket.org/asaadsaad/projectx.git"
+  },
+  "author": "Asaad Saad",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/asaadsaad/projectx#readme",
+  "dependencies": {
+    "bcrypt": "^2.0.1",
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "dateformat": "^3.0.3",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.2.1",
+    "moment": "^2.22.2",
+    "mongoose": "^5.0.16",
+    "morgan": "^1.9.0",
+    "ejs": "~2.5.7"
+  }
+}
