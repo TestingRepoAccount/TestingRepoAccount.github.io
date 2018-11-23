@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Scott Butterfield : Home</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/results.css">
+
+</head>
+
+<body>
+    <main>
+        <section class="list-group">
+            <h2>Writtings / Short Stories</h2>
+            <!--Prelued-->
+            <!--A volume of madness-->
+            <!--Replace bottom titles with the above works-->
+            <ul id="writting">
+                <!-- <li><a target="_blank" href="https://elevenelevenjournal.com/issue-14/scott-butterfield/">Book of Brad</a></li> -->
+                <li><a target="_blank" href="https://www.menacinghedge.com/fall2012/entry-butterfield.php" class="story-cover"><img
+                            src="../images/Prelude Cover.jpg">
+                    </a></li>
+                <li></li>
+                <!--#0000 is a placeholder. Switch value with correct information for writting-->
+                <!-- <li data-writting="#0000" data-mutable>Test Writing</li> -->
+            </ul>
+            <h2>Videos</h2>
+            <!-- <img src="../images/filmframe_brown_default.jpg"> -->
+            <div id="videos"></div>
+            <h2>Podcasts / Audio</h2>
+            <ul id="audio">
+                <li><a target="_blank" href="https://www.stitcher.com/podcast/sarah-j-halsteads-drinking-during-business-hours/e/54465504?autoplay=true">Drinking
+                        during business hours</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <script>
+        const server = "http://localhost:1010"
+        const url = server + "/API/page/category/Video";
+        const output_div = document.querySelector('#videos')
+
+        fetch(url)
+            .then(response => { return response.json(); })
+            .then(videos => {
+                console.log(videos)
+                let output = '<ul id="video">';
+                videos.data.forEach(video => {
+                    output += `
+                        <li data-video="${video.tags}" data-pw="placeholder#" data-mutable class="story-cover">${video.content.replace(/<br>/g, '')}</li>
+                            `
+                });
+
+                return output + '</ul>'
+            })
+            .then(output => output_div.innerHTML = output)
+    </script>
+    <script src="../javascript/results.js" defer></script>
+</body>
+
+</html>

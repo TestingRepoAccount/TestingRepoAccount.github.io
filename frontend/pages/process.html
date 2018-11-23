@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Scott Butterfield : Home</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+</head>
+
+<body>
+    <main id="process">
+        <article>
+            <section id="article-body">
+                <div id="output"></div>
+            </section>
+            <section class="border-section"></section>
+        </article>
+
+    </main>
+    <script>
+        const server = "http://localhost:1010"
+        const url = server + "/API/page/category/Process";
+        const output_div = document.querySelector('#output')
+
+        fetch(url)
+            .then(response => { return response.json(); })
+            .then(articles => {
+                let output = '';
+                articles.data.forEach(article => {
+                    output += `
+                        <section class="article-section">
+                            <div class="article-title">
+                                <h4>${new Date(article.date).toUTCString().split(' ').splice(0, 4).join(' ')}</h4>
+                                <h2>${article.title}</h2>
+                            </div>
+                            <p>${article.content.replace(/<br>/g, '')}<p>
+                            <ul class="article-list">`
+                    article.tags.forEach(t => output += `<li>${t}</li>`)
+                    output += `</ul>
+                        </section>
+                        `
+                });
+                return output
+            })
+            .then(output => output_div.innerHTML = output)
+    </script>
+</body>
+
+</html>

@@ -46,7 +46,6 @@ module.exports.add = (req, res) => {
 module.exports.login = (req, res) => {
     //Find user by email
     User.findOne({ email: req.body.email }, function (err, user) {
-        console.log({ user })
         //Check if any errors are present
         if (err) return res.status(500).json({
             err: err,
@@ -62,7 +61,6 @@ module.exports.login = (req, res) => {
         const token = jwt.sign({ id: user._id }, secretKey, {
             expiresIn: 86400 // expires in 24 hours
         });
-        console.log(token);
         res.status(200).json({ auth: true, token: token });
     });
 }

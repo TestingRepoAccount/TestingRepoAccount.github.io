@@ -2,14 +2,7 @@ const mongoose = require('mongoose');
 const Page = require('../models/page');
 const categories = require('../models/categories')
 const moment = require('moment');
-//Handle functions for varifiying data
-/*************************/
-function formateLetterCase(input) {
-    if (isNaN(input)) return input.toLowerCase();
-    return false;
-}
 
-/*************************/
 
 //Handle post create
 module.exports.create = (req, res) => {
@@ -19,7 +12,7 @@ module.exports.create = (req, res) => {
     const data = {
         _id: mongoose.Types.ObjectId(),
         title: req.body.title,
-        date: Date.parse(moment([date_exploded[2], date_exploded[0], date_exploded[1]]).format('DD MMM YYYY')),
+        date: Date.parse(moment([date_exploded[2], date_exploded[1] - 1, date_exploded[0]]).format('DD MMM YYYY')),
         tags: req.body.tags.split(","),
         content: req.body.content,
         active: req.body.active,
@@ -35,13 +28,15 @@ module.exports.create = (req, res) => {
 
             //Send status code 200 and json data
             res.status(200).json({
+                success: true,
                 message: 'New page is saved',
                 data: data
             });
         })
         .catch((error) => {
             res.status(500).json({
-                error: 'Invalid criteria'
+                success: false,
+                error: 'Invalid criteria' + error
             });
         });
 }
@@ -54,21 +49,22 @@ module.exports.update = (req, res) => {
     //Callback function for update
     const callback = (error, result) => {
         //Ensureno errors are present
-        if (error) return res.status(500).json({ error: "Invalid Criteria" });
+        if (error) return res.status(500).json({ error: "Invalid Criteria", success: false });
 
         //Send result data
         if (result) return res.status(200).json({
-            message: `Updated Page with ID ${req.params.id}`
+            message: `Updated Page with ID ${req.params.id}`,
+            success: true,
         });
 
         //Nothing returned message
-        return res.status(404).json({ data: "Nothing is updated" });
+        return res.status(404).json({ data: "Nothing is updated", success: false });
     }
 
     //Hold input data
     const data = {
         title: req.body.title,
-        date: Date.parse(moment([date_exploded[2], date_exploded[0], date_exploded[1]]).format('DD MMM YYYY')),
+        date: Date.parse(moment([date_exploded[2], date_exploded[1] - 1, date_exploded[0]]).format('DD MMM YYYY')),
         tags: req.body.tags.split(","),
         content: req.body.content,
         active: req.body.active,
@@ -116,11 +112,31 @@ module.exports.retrieveAll = (req, res) => {
         });
 }
 
+module.exports.retrieveAllCategories = (req, res) => {
+
+    //Retrieve all documents in DB
+    Page.find({ category: req.params.category })
+        .sort({ date: -1 })
+        .exec()
+        .then((result) => {
+            res.status(200).json({
+                message: 'Handling GET requests to /get/retrieve',
+                data: result
+            });
+        })
+        .catch((error) => {
+            res.status(500).json({
+                error: error
+            });
+        });
+}
 
 //Handle post delete
 module.exports.delete = (req, res) => {
-    Page.remove({ _id: req.params.id });
-    res.status(200).json({
-        message: `Deleted Page ${req.params.id}`
-    });
+    // console.log(`deleting ${req.params.id}`)
+    Page.remove({ _id: req.params.id }, _ => res.status(200).json({
+        message: `Deleted Page ${req.params.id}`,
+        success: true
+    }));
+
 }

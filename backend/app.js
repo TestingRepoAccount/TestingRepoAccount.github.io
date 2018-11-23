@@ -5,6 +5,8 @@ const cors = require('cors');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const path = require('path')
+var favicon = require('serve-favicon')
+
 const Page = require('./models/page')
 //Configure .ENV file
 // require('dotenv').config()
@@ -27,6 +29,7 @@ app.set('view engine', 'ejs');
 
 //Setup cors
 app.use(cors());
+app.use(favicon(path.join(__dirname, 'views', 'favicon.png')))
 
 //Disable `x-powered-by: Express` message in header
 app.disable('x-powered-by');
@@ -53,16 +56,16 @@ app.use('/API/page', page);
 app.use('/API/user', user);
 app.get('/login', (req, res) => { res.render('login') });
 app.get('/pages', (req, res) => {
-    Page.find({})
-        .exec()
-        .then((result) => res.render('pages', { data: result }));
-
+    // Page.find({})
+    //     .exec()
+    //     .then((result) => res.render('pages', { data: result }));
+    res.render('pages')
 });
 app.get('/page/:id', (req, res) => {
-    Page.findById(req.params.id)
-        .exec()
-        .then((result) => res.render('page', { data: result }))
-
+    // Page.findById(req.params.id)
+    //     .exec()
+    //     .then((result) => res.render('page', { data: result }))
+    res.render('page')
 });
 
 

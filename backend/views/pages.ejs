@@ -1,31 +1,167 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Pages</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Pages List</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+    <style>
+        body {
+        padding-top: 50px;
+        }
+        .starter-template {
+        padding: 40px 15px;
+        text-align: center;
+        }
+</style>
+
 </head>
 
 <body>
-    <h1>Pages</h1>
-    <table>
-        <% for(var i=0; i < data.length; i++) { %>
-        <tr>
-            <td>
-                <%= data[i]._id %>
-            </td>
-            <td>
-                <%= data[i].title %>
-            </td>
-            <td>
-                <%= data[i].content %>
-            </td>
-        </tr>
-        <% } %>
-    </table>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Admin Portal</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/pages">Pages</a></li>
+                    <li><a href="#" id="logout">Logout</a></li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="starter-template">
+            <h1>Pages</h1>
+            <button type="button" class="btn btn-success pull-left" id="add_new">Add New Page</button>
+            <div id="output" style="clear: both; position:relative; top:10px;"></div>
+        </div>
+
+    </div><!-- /.container -->
+
+
+    <script>
+        const server = "http://localhost:1010"
+        const url = server + "/API/page";
+        const logout = document.querySelector('#logout')
+        const output_div = document.querySelector('#output')
+        fetch(url, {
+            headers: {
+                "Authorization": "Bearer: " + localStorage.getItem('token'),
+            }
+        })
+            .then(response => { return response.json(); })
+            .then(result => {
+                let output = `
+                <div class="panel panel-default">
+                <div class="panel-heading">Panel heading</div>
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr class="row">
+                            <td>Title</td>
+                            <td>Date</td>
+                            <td>Tags</td>
+                            <td>Category</td>
+                            <td>Active</td>
+                            <td>Controls</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    `
+                result.data.forEach(element => {
+                    output += `
+                    <tr class="row">
+                        <td><a href="/page/${element._id}">${element.title}</a></td>
+                        <td>${new Date(element.date).toUTCString().split(' ').splice(0, 4).join(' ')}</td >
+                        <td>${element.tags}</td>
+                        <td>${element.category}</td>
+                    <td>${element.active}</td>
+                    <td>
+                            <button type="button" data-id="${element._id}" class="btn btn-primary">Edit</button>
+                            <button type="button" data-id="${element._id}" class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr >
+                    `
+                });
+                output += `</tbody ></table >
+                </div >
+                `
+                return output
+            })
+            .then(output => output_div.innerHTML = output)
+            .then(_ => {
+                document.querySelectorAll('.btn-danger').forEach(elem => elem.addEventListener('click', e => {
+                    e.preventDefault()
+                    if (confirm('Are you sure you want to delete?')) {
+                        fetch(url + '/' + e.target.dataset.id, {
+                            method: 'DELETE',
+                            mode: "cors",
+                            cache: "no-cache",
+                            credentials: "same-origin",
+                            headers: {
+                                "Authorization": "Bearer: " + localStorage.getItem('token'),
+                            },
+                            redirect: "follow",
+                            referrer: "no-referrer",
+                        })
+                            .then(response => response.json())
+                            .then(json => {
+                                if (json.success) {
+                                    // window.location.href = server + "/pages";
+                                    e.target.parentElement.parentElement.remove()
+                                }
+                                else alert('Something Went Wrong, try again!')
+                            })
+                    }
+                }))
+
+                // 
+                document.querySelectorAll('.btn-primary').forEach(elem => elem.addEventListener('click', e => {
+                    e.preventDefault()
+                    window.location.href = `/page/${e.target.dataset.id}`
+                }))
+            })
+
+
+        logout.addEventListener('click', e => {
+            e.preventDefault()
+            localStorage.setItem('token', null);
+            window.location.href = server + "/login";
+        })
+
+        document.querySelector('#add_new').addEventListener('click', e => {
+            e.preventDefault()
+            window.location.href = server + "/page/new";
+        })
+
+
+    </script>
+
+
+
+
 </body>
-<script>
-
-
-</script>
 
 </html>
