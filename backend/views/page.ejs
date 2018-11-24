@@ -90,6 +90,7 @@
                             <option>Video</option>
                             <option>Story</option>
                             <option>Patterns</option>
+                            <option>Audio</option>
                         </select>
                     </div>
                 </div>
@@ -112,6 +113,18 @@
                         <textarea class="form-control" rows="3" name="content" id="content"></textarea>
                     </div>
                 </div>
+
+
+                <div class="form-group">
+                    <label for="exampleFormControlFile1" class="col-sm-2 control-label">Upload File</label>
+                    <div class="col-sm-10">
+                        <input type="file" class="form-control-file" name="file">
+                        <input type="hidden" name="filename_hidden">
+                        <div id="upload_result"></div>
+                        <div id="loader" style="display: none;"><img src="../views/loader.gif" width="30" />Uploading...</div>
+                    </div>
+                </div>
+
 
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
@@ -148,6 +161,10 @@
         const save = document.querySelector('#save');
         const cancel = document.querySelector('#cancel');
         const form = document.querySelector('form');
+        const file = document.querySelector('[name=file]');
+        const filename_hidden = document.querySelector('[name=filename_hidden]');
+        const loader = document.querySelector('#loader');
+        const upload_result = document.querySelector('#upload_result');
         const page_id = _id || ''
         const url = server + "/API/page/";
         const get_url = url + page_id;
@@ -172,9 +189,10 @@
                 date: date.value,
                 tags: tags.value,
                 category: category.options[category.selectedIndex].text,
-                active: active.checked
+                active: active.checked,
+                file: filename_hidden.value
             }
-            console.log(data)
+            // console.log(data.file)
 
 
             fetch(fetch_obj.url, {
@@ -208,7 +226,7 @@
                 .then(response => { return response.json(); })
                 .then(res => { return res.data })
                 .then(data => {
-                    console.log(data)
+                    // console.log(data)
                     title.value = data.title;
                     const page_date = new Date(data.date)
                     const curr_day = page_date.getDate();
@@ -220,6 +238,9 @@
                     tags.value = data.tags;
                     category.value = data.category;
                     data.active ? active.checked = true : active.checked = false
+                    upload_result.innerHTML = 'Select file to upload'
+                    if (data.file) upload_result.innerHTML += `  -  <a href="../tmp/${data.file}" target="_blank">${data.file}</a>`
+                    filename_hidden.value = data.file
                     $('#content').summernote('code', data.content);
                 })
         }
@@ -236,7 +257,40 @@
             }
 
         })
+        file.addEventListener('change', e => {
+            loader.style.display = 'block'
+            const formData = new FormData();
+            // console.log(file.files[0])
+            formData.append('file', file.files[0]);
 
+            const options = {
+                method: 'POST',
+                body: formData,
+
+                headers: {
+                    // If you add this, upload won't work
+                    // 'Content-Type': 'multipart/form-data',
+                    "Authorization": "Bearer: " + localStorage.getItem('token'),
+
+                }
+            };
+            // console.log('sending post fetch request')
+            fetch(url + 'upload', options)
+                .then(response => response.json())
+                .then(result => {
+                    if (result.error) {
+                        file.value = ''
+                        upload_result.innerHTML = `Only Images or PDF are allowed. Please try again.`
+                        loader.style.display = 'none'
+                    } else {
+                        filename_hidden.value = result.filename
+                        file.value = ''
+                        upload_result.innerHTML = `Uploaded Successfully  -  <a href="../tmp/${result.filename}" target="_blank">${result.filename}</a>`
+                        loader.style.display = 'none'
+                    }
+
+                }).catch(e => console.log(e));
+        })
 
     </script>
 

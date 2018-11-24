@@ -9,7 +9,8 @@ const pageSchema = mongoose.Schema({
     tags: [String],
     content: String,
     active: Boolean,
-    category: String
+    category: String,
+    file: String
 });
 
 module.exports = mongoose.model('Page', pageSchema);

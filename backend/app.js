@@ -42,7 +42,8 @@ mongoose
 
 //Setup morgan
 app.use(morgan(process.env.ENVIRONMENT || 'dev'));
-
+app.use('/views', express.static('views'))
+app.use('/tmp', express.static('tmp'))
 
 //Setup body-parser
 app.use(bodyParser.json());
