@@ -32,8 +32,13 @@ main,
 main > article {
     height: 100%;
     overflow: auto;
+    text-align: center;
+    background-image: url(../images/filmframe_brown.jpg);
+    background-size: 100% 100%;
 }
-
+main *{
+    text-align: center;
+}
 table{
     background-color: black !important;
     color: #ddd !important;

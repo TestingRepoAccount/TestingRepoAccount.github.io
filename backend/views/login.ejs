@@ -65,47 +65,6 @@
 
 
 </body>
-<script>
 
-  const email = document.querySelector('[name=email]')
-  const password = document.querySelector('[name=password]')
-  const submit = document.querySelector('#submit');
-  const form = document.querySelector('form');
-  const server = "http://localhost:1010"
-  const url = server + "/API/user/login";
-
-
-
-  const formHandle = e => {
-    e.preventDefault()
-    const data = {
-      email: email.value,
-      password: password.value
-    }
-    fetch(url, {
-      method: "POST",
-      mode: "cors",
-      cache: "no-cache",
-      credentials: "same-origin",
-      headers: {
-        "Content-Type": "application/json; charset=utf-8",
-      },
-      redirect: "follow",
-      referrer: "no-referrer",
-      body: JSON.stringify(data),
-    })
-      .then(response => { return response.json(); })
-      .then(json => {
-        localStorage.setItem('token', json.token);
-        // console.log(json.token)
-        if (json.token) window.location.href = server + "/pages";
-      })
-      .catch(err => null)
-  }
-
-  submit.addEventListener('click', formHandle)
-  form.addEventListener('submit', formHandle)
-
-</script>
 
 </html>

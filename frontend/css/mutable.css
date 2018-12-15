@@ -1,4 +1,8 @@
 /*General Styles*/
+
+body{
+    text-align: center;
+}
 section {
     width: 900px;
     height: 500px;

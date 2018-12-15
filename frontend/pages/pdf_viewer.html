@@ -1,0 +1,22 @@
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+<style>
+    div {
+        text-align: center;
+    }
+</style>
+
+<body>
+    <div><button class="button is-primary">Show Another Page</button></div>
+    <iframe src="#" frameborder="0" style="overflow:hidden;height:100%;width:100%" height="100%" width="100%"></iframe>
+</body>
+
+<script>
+    const server = "http://localhost:1010"
+    const iframe = document.querySelector('iframe')
+    iframe.src = `${server}/API/page/getPdfPage/${window.location.href.split('pdf_viewer.html?')[1].split('=')[1]}`;
+
+    document.querySelector('button').addEventListener('click', e => {
+        window.location.reload()
+    })
+</script>

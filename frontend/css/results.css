@@ -94,3 +94,16 @@ li div{
 li[data-mutable]{
     display: inline;
 }
+
+#audio_div{
+    text-align: center; 
+    color: #666;
+}
+#audio_div p{
+    color: #666;
+    font-weight: bold;
+}
+#audio_div a{
+    color: #666;
+    font-weight: bold;
+}
