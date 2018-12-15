@@ -12,7 +12,7 @@
 </body>
 
 <script>
-    const server = "http://localhost:1010"
+    const server = "https://scott-blog-website.herokuapp.com"
     const iframe = document.querySelector('iframe')
     iframe.src = `${server}/API/page/getPdfPage/${window.location.href.split('pdf_viewer.html?')[1].split('=')[1]}`;
 
